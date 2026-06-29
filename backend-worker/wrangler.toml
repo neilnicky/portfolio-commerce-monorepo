@@ -1,0 +1,46 @@
+name = "mindhun-backend-worker"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[triggers]
+crons = ["0 */6 * * *"]
+
+# ── DEV ──────────────────────────────────────────────────────────────────────
+
+[env.dev]
+vars = { ENVIRONMENT = "dev" }
+
+[[env.dev.r2_buckets]]
+binding    = "ASSETS_BUCKET"
+bucket_name = "midhun-raj-assets-dev"
+
+[[env.dev.queues.producers]]
+binding = "PAYMENT_QUEUE"
+queue   = "payment-events-dev"
+
+[[env.dev.queues.consumers]]
+queue             = "payment-events-dev"
+max_batch_size    = 10
+max_batch_timeout = 5
+max_retries       = 3
+
+# ── PRODUCTION ───────────────────────────────────────────────────────────────
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[[env.production.r2_buckets]]
+binding    = "ASSETS_BUCKET"
+bucket_name = "midhun-raj-assets-production"
+
+[[env.production.queues.producers]]
+binding = "PAYMENT_QUEUE"
+queue   = "payment-events-production"
+
+[[env.production.queues.consumers]]
+queue             = "payment-events-production"
+max_batch_size    = 10
+max_batch_timeout = 5
+max_retries       = 3
+dead_letter_queue = "payment-events-dlq-production"
