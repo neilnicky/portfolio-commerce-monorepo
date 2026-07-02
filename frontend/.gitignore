@@ -1,0 +1,31 @@
+# dependencies
+/node_modules
+
+# next
+/.next
+/out
+
+# opennext / cloudflare
+/.open-next
+.dev.vars
+.wrangler
+
+# generated cloudflare binding types (run `pnpm cf-typegen`)
+worker-configuration.d.ts
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# env
+.env*.local
+
+# typescript
+next-env.d.ts
+*.tsbuildinfo
+
+# vitest
+/coverage

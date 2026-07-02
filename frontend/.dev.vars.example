@@ -1,0 +1,7 @@
+# Local dev bindings (copy to `.dev.vars`, never commit the real one).
+# Server-only — reached via getCloudflareContext(). NOT shipped to the browser.
+API_BASE_URL="http://localhost:8787"
+INTERNAL_SERVICE_SECRET=""
+
+# Public, browser-visible (also set in your shell / .env.local for `next dev`).
+# NEXT_PUBLIC_API_URL="http://localhost:8787"

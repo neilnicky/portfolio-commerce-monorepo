@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "midhun-raj-frontend",
+  "compatibility_date": "2024-12-30",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  // Static assets (OpenNext output). Required.
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  // Next image optimization binding.
+  "images": {
+    "binding": "IMAGES"
+  },
+  // Must match "name" above — OpenNext self-reference for cache/ISR plumbing.
+  "services": [
+    { "binding": "WORKER_SELF_REFERENCE", "service": "midhun-raj-frontend" }
+  ],
+  // FREE PLAN: intentionally NO durable_objects, NO migrations, NO queues, NO r2_buckets.
+  // Public, non-secret config only. Secrets uploaded out-of-band (wrangler secret).
+  "vars": {
+    "ENVIRONMENT": "production"
+  },
+  "env": {
+    "dev": {
+      "vars": {
+        "ENVIRONMENT": "dev"
+      }
+    }
+  }
+}
