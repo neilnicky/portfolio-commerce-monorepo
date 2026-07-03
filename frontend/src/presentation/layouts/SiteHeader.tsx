@@ -11,7 +11,7 @@ export function SiteHeader({ vm }: { vm: SiteHeaderVm }) {
       <div className="mx-auto flex h-20 w-full max-w-site items-center justify-between px-margin-mobile md:px-margin-desktop">
         <Link
           href={vm.brand.href}
-          className="font-display text-headline-sm tracking-tighter text-primary"
+          className="font-display text-headline-sm tracking-tighter text-primary transition-transform duration-300 ease-cinematic hover:-translate-y-0.5"
         >
           {vm.brand.name}
         </Link>
@@ -25,7 +25,7 @@ export function SiteHeader({ vm }: { vm: SiteHeaderVm }) {
                 "font-body text-label-md uppercase tracking-widest transition-colors duration-300",
                 link.active
                   ? "border-b border-primary pb-1 text-primary"
-                  : "text-on-surface-variant hover:text-primary",
+                  : "link-underline text-on-surface-variant hover:text-primary",
               )}
             >
               {link.label}

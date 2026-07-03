@@ -18,7 +18,7 @@ export function SiteFooter({ vm }: { vm: SiteFooterVm }) {
             <Link
               key={s.label}
               href={s.href}
-              className="font-body text-label-md uppercase tracking-widest text-on-surface-variant opacity-80 transition-opacity duration-300 hover:text-primary hover:opacity-100"
+              className="link-underline font-body text-label-md uppercase tracking-widest text-on-surface-variant opacity-80 transition-all duration-300 hover:-translate-y-0.5 hover:text-primary hover:opacity-100"
             >
               {s.label}
             </Link>

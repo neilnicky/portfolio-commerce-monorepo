@@ -26,7 +26,7 @@ export function MediaFrame({
   return (
     <div
       className={cn(
-        "overflow-hidden bg-surface-container",
+        "relative overflow-hidden bg-surface-container",
         bordered && "border border-hairline",
         aspect,
         className,
@@ -37,11 +37,13 @@ export function MediaFrame({
         src={src}
         alt={alt}
         className={cn(
-          "h-full w-full object-cover transition-all ease-cinematic group-hover:scale-105",
+          "h-full w-full object-cover transition-all ease-cinematic group-hover:scale-[1.07]",
           duration,
           grayscale && "grayscale group-hover:grayscale-0",
         )}
       />
+      {/* Diagonal light sweep on hover — the premium "sheen". */}
+      <span className="sheen absolute inset-0 overflow-hidden" aria-hidden />
     </div>
   );
 }

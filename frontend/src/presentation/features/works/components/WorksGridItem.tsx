@@ -19,7 +19,7 @@ export function WorksGridItem({ item }: { item: WorksGridItemVm }) {
       <div className="relative overflow-hidden">
         <MediaFrame src={work.imageSrc} alt={work.imageAlt} aspect={ASPECT.wide} grayscale bordered={false} />
         <div className="absolute inset-0 flex items-end bg-gradient-to-t from-background/90 to-transparent p-8 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          <span className="border border-hairline-active px-3 py-1 font-body text-label-md uppercase text-primary">
+          <span className="translate-y-3 border border-hairline-active px-3 py-1 font-body text-label-md uppercase text-primary transition-transform duration-500 ease-cinematic group-hover:translate-y-0">
             View Film
           </span>
         </div>
@@ -40,7 +40,10 @@ export function WorksGridItem({ item }: { item: WorksGridItemVm }) {
               {work.meta}
             </p>
           </div>
-          <Icon name="arrow_outward" className="text-primary-fixed-dim" />
+          <Icon
+            name="arrow_outward"
+            className="text-primary-fixed-dim transition-all duration-300 ease-cinematic group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary"
+          />
         </div>
       ) : span === "thin-wide" ? (
         <div className="mt-6 flex items-start gap-12">

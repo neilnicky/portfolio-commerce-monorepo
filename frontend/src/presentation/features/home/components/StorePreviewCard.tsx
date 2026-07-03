@@ -4,7 +4,7 @@ import { EditorialButton } from "@presentation/components/ui/EditorialButton";
 /** Digital-product teaser card with a ghosted "film-slate" backdrop word. */
 export function StorePreviewCard({ vm }: { vm: StorePreviewItemVm }) {
   return (
-    <div className="group border border-hairline-faint bg-surface p-8 transition-all duration-500 hover:border-hairline-strong">
+    <div className="group border border-hairline-faint bg-surface p-8 transition-all duration-500 ease-cinematic hover:-translate-y-1.5 hover:border-hairline-strong hover:bg-surface-container-low">
       <div className="relative mb-8 flex aspect-video items-center justify-center overflow-hidden bg-surface-container-high">
         <span className="font-display text-body-lg text-primary/5 transition-transform duration-700 group-hover:scale-110">
           {vm.backdropWord}

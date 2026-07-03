@@ -9,18 +9,25 @@ export function PhilosophyHero({ hero }: Pick<PhilosophyPageVm, "hero">) {
       <Container>
         <div className="grid grid-cols-12 items-center gap-gutter">
           <div className="z-10 col-span-12 md:col-span-7">
-            <Eyebrow className="mb-6">{hero.eyebrow}</Eyebrow>
+            <Eyebrow withLine className="mb-6">{hero.eyebrow}</Eyebrow>
             <h1 className="mb-12 font-display text-headline-lg-mobile text-primary md:text-display-lg">
-              {hero.headingLead}
+              <span className="inline-block animate-rise">{hero.headingLead}</span>
               <br />
-              <span className="font-medium italic">{hero.headingEmphasis}</span>
+              <span className="inline-block animate-rise delay-2 font-medium italic">
+                {hero.headingEmphasis}
+              </span>
             </h1>
           </div>
 
-          <div className="col-span-12 mt-12 md:col-span-10 md:col-start-3 md:-mt-12">
-            <div className="aspect-[1.28] w-full overflow-hidden bg-surface-container grayscale transition-all duration-700 ease-in-out hover:grayscale-0">
+          <div className="group col-span-12 mt-12 animate-clip-reveal md:col-span-10 md:col-start-3 md:-mt-12">
+            <div className="relative aspect-[1.28] w-full overflow-hidden bg-surface-container grayscale transition-all duration-700 ease-in-out hover:grayscale-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={hero.portrait.src} alt={hero.portrait.alt} className="h-full w-full object-cover" />
+              <img
+                src={hero.portrait.src}
+                alt={hero.portrait.alt}
+                className="h-full w-full object-cover transition-transform duration-[1.2s] ease-cinematic group-hover:scale-105"
+              />
+              <span className="sheen absolute inset-0 overflow-hidden" aria-hidden />
             </div>
             <div className="mt-6 flex items-start justify-between border-t border-hairline pt-4">
               <p className="font-body text-label-md uppercase text-on-surface-variant">{hero.captionLeft}</p>

@@ -49,7 +49,7 @@ export function StoreProductCard({ vm }: { vm: StoreProductVm }) {
 
   if (vm.span === "third") {
     return (
-      <div>
+      <div className="transition-transform duration-500 ease-cinematic group-hover:-translate-y-1.5">
         <MediaFrame src={vm.imageSrc} alt={vm.imageAlt} aspect="aspect-square" bordered={false} className="mb-6" />
         <h3 className="mb-2 font-display text-headline-sm">{vm.title}</h3>
         <p className="mb-4 font-body text-label-md uppercase tracking-widest text-on-surface-variant">
@@ -62,7 +62,7 @@ export function StoreProductCard({ vm }: { vm: StoreProductVm }) {
 
   // Default: half-width card.
   return (
-    <div className="cursor-pointer">
+    <div className="cursor-pointer transition-transform duration-500 ease-cinematic group-hover:-translate-y-1.5">
       <MediaFrame src={vm.imageSrc} alt={vm.imageAlt} aspect="aspect-[16/10]" bordered={false} className="mb-6" />
       <div className="mb-4 flex items-start justify-between">
         <div>
