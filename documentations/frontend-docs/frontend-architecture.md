@@ -13,7 +13,7 @@
 - **Server state / data fetching**: TanStack Query (React Query) on the client; native `fetch` + `cache`/`revalidate` in Server Components.
 - **Client state**: Zustand for shared client state; `useState`/`useReducer` for local; React Context only for genuinely cross-cutting, low-frequency values (theme, current user).
 - **Forms**: React Hook Form + Zod resolver.
-- **Validation**: Zod, at every trust boundary (form input, API response parsing, route-handler input).
+- **Validation**: Zod, at every trust boundarµy (form input, API response parsing, route-handler input).
 - **Language**: TypeScript, `strict: true`, ESM.
 - **Styling**: utility-first (Tailwind) + a small set of design-system primitives. Tokens, not ad-hoc values.
 - **Tests**: Vitest + Testing Library; use-cases/hooks tested against **mocked repository interfaces**; network mocked with MSW.

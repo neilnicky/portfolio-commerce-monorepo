@@ -1,10 +1,155 @@
 @import "tailwindcss";
 
+/* =============================================================================
+   THE SINGLE SOURCE OF TRUTH — DESIGN TOKENS
+   -----------------------------------------------------------------------------
+   Rebrand the entire visual identity (colours, fonts, type scale, spacing,
+   motion) by editing ONLY this @theme block. No component references a raw
+   hex / px / font-family — every value below surfaces as a Tailwind utility
+   (bg-surface, text-display-lg, px-margin-desktop, font-display, …).
+   Font FILES are loaded in app/layout.tsx via next/font and exposed as the
+   --font-playfair / --font-inter CSS variables consumed here.
+   ============================================================================= */
+@theme {
+  /* ---- Brand colour palette (Cinematic Editorial, dark) ------------------ */
+  --color-background: #131313;
+  --color-on-background: #e2e2e2;
+
+  --color-surface: #131313;
+  --color-surface-dim: #131313;
+  --color-surface-bright: #393939;
+  --color-surface-variant: #353535;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1b1b1b;
+  --color-surface-container: #1f1f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353535;
+  --color-surface-tint: #c6c6c7;
+
+  --color-on-surface: #e2e2e2;
+  --color-on-surface-variant: #c4c7c8;
+  --color-inverse-surface: #e2e2e2;
+  --color-inverse-on-surface: #303030;
+
+  --color-primary: #ffffff;
+  --color-on-primary: #2f3131;
+  --color-primary-container: #e2e2e2;
+  --color-on-primary-container: #636565;
+  --color-primary-fixed: #e2e2e2;
+  --color-primary-fixed-dim: #c6c6c7;
+  --color-on-primary-fixed: #1a1c1c;
+  --color-on-primary-fixed-variant: #454747;
+  --color-inverse-primary: #5d5f5f;
+
+  --color-secondary: #c8c6c5;
+  --color-on-secondary: #313030;
+  --color-secondary-container: #4a4949;
+  --color-on-secondary-container: #bab8b7;
+
+  --color-tertiary: #ffffff;
+  --color-on-tertiary: #393000;
+  --color-tertiary-container: #f7e382;
+  --color-on-tertiary-container: #73640e;
+
+  --color-outline: #8e9192;
+  --color-outline-variant: #444748;
+
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  /* ---- Hairline system (etched-glass 1px dividers/borders) ---------------- */
+  --color-hairline: rgb(255 255 255 / 0.1);
+  --color-hairline-faint: rgb(255 255 255 / 0.05);
+  --color-hairline-strong: rgb(255 255 255 / 0.2);
+  --color-hairline-active: rgb(255 255 255 / 0.4);
+
+  /* ---- Type families (files loaded in layout.tsx via next/font) ----------- */
+  --font-display: var(--font-playfair), "Playfair Display", serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
+
+  /* ---- Type scale (size + line-height + letter-spacing + weight) ---------- */
+  --text-display-lg: 84px;
+  --text-display-lg--line-height: 1.1;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 700;
+
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 1.2;
+  --text-headline-lg--font-weight: 600;
+
+  --text-headline-lg-mobile: 36px;
+  --text-headline-lg-mobile--line-height: 1.2;
+  --text-headline-lg-mobile--font-weight: 600;
+
+  --text-headline-md: 32px;
+  --text-headline-md--line-height: 1.3;
+  --text-headline-md--font-weight: 500;
+
+  --text-headline-sm: 24px;
+  --text-headline-sm--line-height: 1.4;
+  --text-headline-sm--font-weight: 500;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.6;
+  --text-body-md--font-weight: 400;
+
+  --text-label-md: 12px;
+  --text-label-md--line-height: 1;
+  --text-label-md--letter-spacing: 0.1em;
+  --text-label-md--font-weight: 600;
+
+  /* ---- Spacing scale (structural rhythm) --------------------------------- */
+  --spacing-unit: 8px;
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 64px;
+
+  /* ---- Layout container --------------------------------------------------- */
+  --container-site: 1440px;
+
+  /* ---- Tracking presets (editorial "film slate" metadata) ---------------- */
+  --tracking-metadata: 0.3em;
+  --tracking-metadata-wide: 0.4em;
+
+  /* ---- Motion ------------------------------------------------------------- */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-editorial: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark colour scheme is the brand default. */
 :root {
   color-scheme: dark;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: #0a0a0a;
-  color: #fafafa;
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Material Symbols baseline (weight/fill tuned to the editorial hairline look). */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+
+/* Custom scrollbar — brand-tinted. */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-container-highest);
 }
