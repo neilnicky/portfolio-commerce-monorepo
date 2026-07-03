@@ -1,7 +1,8 @@
 name: Deploy Frontend
 
-# Build the Next.js app with OpenNext and deploy it to Cloudflare Workers
-# on every push to main that touches the frontend (or this workflow).
+# Typecheck + test the frontend, then (only if green) build with OpenNext and
+# deploy to Cloudflare Workers. Runs on every push to main that touches the
+# frontend or this workflow.
 on:
   push:
     branches: [main]
@@ -15,7 +16,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: frontend/pnpm-lock.yaml
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm run typecheck
+
+      - run: pnpm test
+
   deploy:
+    needs: checks
     runs-on: ubuntu-latest
     defaults:
       run:
