@@ -1,3 +1,6 @@
+// Backend-dependent download flow — never prerendered.
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   params: Promise<{ token: string }>;
 }

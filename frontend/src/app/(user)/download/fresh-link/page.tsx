@@ -1,3 +1,6 @@
+// Backend-dependent download flow — never prerendered.
+export const dynamic = "force-dynamic";
+
 /** Request + verify a one-time code → fresh download link. Code goes only to email on record. */
 export default function FreshLinkPage() {
   return (

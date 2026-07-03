@@ -1,3 +1,6 @@
+// Backend-gated admin route — never prerendered.
+export const dynamic = "force-dynamic";
+
 export default function AdminDashboardPage() {
   return (
     <section>

@@ -1,3 +1,6 @@
+// Backend-dependent checkout flow — never prerendered.
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   params: Promise<{ orderId: string }>;
 }

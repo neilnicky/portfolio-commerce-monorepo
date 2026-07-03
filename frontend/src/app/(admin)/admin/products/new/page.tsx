@@ -1,3 +1,6 @@
+// Backend-gated admin route — never prerendered.
+export const dynamic = "force-dynamic";
+
 /** Create product — RHF + Zod (ProductFormSchema), asset uploaded directly to private R2. */
 export default function NewProductPage() {
   return (

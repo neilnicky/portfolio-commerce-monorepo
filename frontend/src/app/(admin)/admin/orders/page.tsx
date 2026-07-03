@@ -1,3 +1,6 @@
+// Backend-gated admin route — never prerendered.
+export const dynamic = "force-dynamic";
+
 /** Admin orders list. */
 export default function AdminOrdersPage() {
   return (
